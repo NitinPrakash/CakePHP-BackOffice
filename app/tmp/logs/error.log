@@ -1,0 +1,10 @@
+2016-06-19 13:44:32 Error: [MissingPluginException] Plugin DebugKit could not be found.
+Exception Attributes: array (
+  'plugin' => 'DebugKit',
+)
+Stack Trace:
+#0 /opt/lampp/htdocs/CakePHP-BackOffice/app/Config/bootstrap.php(110): CakePlugin::load('DebugKit')
+#1 /opt/lampp/htdocs/CakePHP-BackOffice/lib/Cake/Core/Configure.php(92): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/CakePHP-BackOffice/lib/Cake/bootstrap.php(177): Configure::bootstrap(true)
+#3 /opt/lampp/htdocs/CakePHP-BackOffice/app/webroot/index.php(92): include('/opt/lampp/htdo...')
+#4 {main}
