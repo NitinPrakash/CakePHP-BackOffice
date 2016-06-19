@@ -8,3 +8,12 @@ Stack Trace:
 #2 /opt/lampp/htdocs/CakePHP-BackOffice/lib/Cake/bootstrap.php(177): Configure::bootstrap(true)
 #3 /opt/lampp/htdocs/CakePHP-BackOffice/app/webroot/index.php(92): include('/opt/lampp/htdo...')
 #4 {main}
+2016-06-19 17:43:28 Error: [MissingControllerException] Controller class AdminController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminController',
+  'plugin' => NULL,
+)
+Request URL: /CakePHP-BackOffice/admin
+Stack Trace:
+#0 /opt/lampp/htdocs/CakePHP-BackOffice/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
