@@ -17,3 +17,21 @@ Request URL: /CakePHP-BackOffice/admin
 Stack Trace:
 #0 /opt/lampp/htdocs/CakePHP-BackOffice/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2016-06-19 18:23:52 Error: [MissingControllerException] Controller class AdminController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminController',
+  'plugin' => NULL,
+)
+Request URL: /CakePHP-BackOffice/admin
+Stack Trace:
+#0 /opt/lampp/htdocs/CakePHP-BackOffice/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-06-20 06:44:24 Error: [MissingControllerException] Controller class AdminController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminController',
+  'plugin' => NULL,
+)
+Request URL: /CakePHP-BackOffice/admin
+Stack Trace:
+#0 /opt/lampp/htdocs/CakePHP-BackOffice/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
