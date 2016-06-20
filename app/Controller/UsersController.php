@@ -16,6 +16,11 @@ class UsersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'Session', 'Flash');
+        
+        public function beforeFilter() {
+            parent::beforeFilter();
+            $this->Auth->allow(array('admin_login'));
+        }
 
 /**
  * index method
@@ -190,4 +195,8 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+        public function admin_login(){
+            $this->layout = "admin_login";
+        }
 }
