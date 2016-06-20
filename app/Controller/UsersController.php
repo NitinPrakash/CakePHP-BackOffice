@@ -19,7 +19,7 @@ class UsersController extends AppController {
         
         public function beforeFilter() {
             parent::beforeFilter();
-            $this->Auth->allow(array('admin_login'));
+            $this->Auth->allow(array('admin_login','admin_add','admin_index'));
         }
 
 /**
@@ -142,6 +142,7 @@ class UsersController extends AppController {
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
+                        $this->request->data['User']['password'] = AuthComponent::password($this->request->data['User']['password']);
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -198,5 +199,13 @@ class UsersController extends AppController {
         
         public function admin_login(){
             $this->layout = "admin_login";
+            if($this->request->is('Post')){                
+                if( $this->Auth->login() ){                
+                //$user = $this->User->findByUsernameAndPassword( $this->request->data['User']['username'], AuthComponent::password( $this->request->data['User']['password'] ));                
+                    $this->Session->setFlash( __('Valid Login Details!') );
+                }else{
+                    $this->Session->setFlash( __('Invalid Login Details!') );
+                }
+            }
         }
 }

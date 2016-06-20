@@ -30,21 +30,22 @@
 
         <div id="login-page">
 	  	<div class="container">
-	  	
-		      <form class="form-login" action="index.html">
+                      
+                      <?php echo $this->Form->create('User',array('class'=>'form-login')); ?>  
+                        
 		        <h2 class="form-login-heading">sign in now</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="User ID" autofocus>
+		            <input type="text" class="form-control" placeholder="<?php echo __('Username/Email');?>" name="data[User][username]" autofocus>
 		            <br>
-		            <input type="password" class="form-control" placeholder="Password">
+		            <input type="password" class="form-control" placeholder="<?php echo __('Password');?>" name="data[User][password]" >
 		            <label class="checkbox">
 		                <span class="pull-right">
-		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+		                    <a data-toggle="modal" href="login.html#myModal"> <?php echo __('Forgot Password?');?></a>
 		
 		                </span>
 		            </label>
-		            <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
-		            <hr>
+		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> <?php echo __('SIGN IN');?></button>
+<!--		            <hr>-->
 		            
 <!--		            <div class="login-social-link centered">
 		            <p>or you can sign in via your social network</p>
@@ -57,6 +58,8 @@
 		                    Create an account
 		                </a>
 		            </div>-->
+                            <div>&nbsp;</div>
+                            <div class="alert alert-danger text-center"><?php echo $this->Session->flash(); ?></div> 
 		
 		        </div>
 		
@@ -82,7 +85,7 @@
 		          </div>
 		          <!-- modal -->
 		
-		      </form>	  	
+		      <?php echo $this->Form->end(); ?>	  	
 	  	
 	  	</div>
 	  </div>
