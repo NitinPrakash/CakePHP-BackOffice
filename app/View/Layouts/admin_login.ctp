@@ -1,10 +1,8 @@
-<?php
-    $cakeDescription = __d('cake_dev', 'CakePHP BackOffice');
-?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+        <?php $cakeDescription = __d('cake_dev', 'CakePHP BackOffice');?>
 	<title>
 		<?php echo $cakeDescription ?>:
 		<?php echo $this->fetch('title'); ?>
@@ -29,82 +27,54 @@
 <body>
 
         <div id="login-page">
-	  	<div class="container">
-                      
-                    <div class="users form">
-                    <?php echo $this->Flash->render('auth'); ?>
-                    <?php echo $this->Form->create('User'); ?>
-                        <fieldset>
-                            <legend>
-                                <?php echo __('Please enter your username and password'); ?>
-                            </legend>
-                            <?php echo $this->Form->input('username');
-                            echo $this->Form->input('password');
-                        ?>
-                        </fieldset>
-                    <?php echo $this->Form->end(__('Login')); ?>
-                    </div>
-                    
-                      <?php /* echo $this->Form->create('User',array('class'=>'form-login')); ?>  
-                        
-		        <h2 class="form-login-heading">sign in now</h2>
+	  	<div class="container">                    
+                    <div class="users form">                        
+                      <?php echo $this->Form->create('User',array('class'=>'form-login')); ?>                          
+		        <h2 class="form-login-heading">Sign in</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="<?php echo __('Username/Email');?>" name="data[User][username]" autofocus>
-		            <br>
-		            <input type="password" class="form-control" placeholder="<?php echo __('Password');?>" name="data[User][password]" >
+                            <?php echo $this->Form->input('username',array('class'=>'form-control','placeholder' => __('Username'),'label'=> false));?>
+                            <br/>
+                            <?php echo $this->Form->input('password',array('class'=>'form-control','placeholder' => __('Password'),'label'=> false));?>
 		            <label class="checkbox">
 		                <span class="pull-right">
-		                    <a data-toggle="modal" href="login.html#myModal"> <?php echo __('Forgot Password?');?></a>
-		
+		                    <a data-toggle="modal" href="login.html#myModal"> <?php echo __('Forgot Password?');?></a>		
 		                </span>
 		            </label>
 		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> <?php echo __('SIGN IN');?></button>
-<!--		            <hr>-->
-		            
-<!--		            <div class="login-social-link centered">
-		            <p>or you can sign in via your social network</p>
-		                <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-		                <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-		            </div>-->
-<!--		            <div class="registration">
-		                Don't have an account yet?<br/>
-		                <a class="" href="#">
-		                    Create an account
-		                </a>
-		            </div>-->
+
                             <div>&nbsp;</div>
-                            <div class="alert alert-danger text-center"><?php echo $this->Session->flash(); ?></div> 
+                            <?php if($flash = $this->Session->flash()) { ?>
+                                <div class="alert alert-danger text-center"><?php  echo $flash; ?></div>   
+                            <?php } ?>		
+		        </div>				          
 		
-		        </div>
-		
-		          <!-- Modal -->
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-		              <div class="modal-dialog">
-		                  <div class="modal-content">
-		                      <div class="modal-header">
-		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h4 class="modal-title">Forgot Password ?</h4>
-		                      </div>
-		                      <div class="modal-body">
-		                          <p>Enter your e-mail address below to reset your password.</p>
-		                          <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-		
-		                      </div>
-		                      <div class="modal-footer">
-		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-		                          <button class="btn btn-theme" type="button">Submit</button>
-		                      </div>
-		                  </div>
-		              </div>
-		          </div>
-		          <!-- modal -->
-		
-		      <?php echo $this->Form->end(); */ ?>	  	
+		      <?php echo $this->Form->end();  ?>	  	
 	  	
 	  	</div>
 	  </div>
 
-    
+          <!-- Modal -->
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Forgot Password ?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Enter your e-mail address below to reset your password.</p>
+                            <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                            <button class="btn btn-theme" type="button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <!-- modal -->  
+                
 	<?php 
             echo $this->Html->script( array('jquery-1.8.3.min','bootstrap.min.js','jquery.dcjqaccordion.2.7','jquery.scrollTo.min','jquery.nicescroll','jquery.sparkline','common-scripts','jquery.gritter','gritter-conf','sparkline-chart','zabuto_calendar') );    
         ?>

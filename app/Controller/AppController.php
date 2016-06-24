@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     
-    public $components = array('Auth','Security','Paginator', 'Session', 'Flash');
+    public $components = array('Auth','Security','Paginator', 'Session');
     
     function beforeFilter() {
         if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {

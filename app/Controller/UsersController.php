@@ -200,19 +200,19 @@ class UsersController extends AppController {
             $this->layout = 'admin_login';            
                  if ($this->request->is('post')) {
                      
-                    // pr($this->request->data);
-                    //$this->request->data['User']['password'] = AuthComponent :: password( $this->request->data['User']['password'] ); 
                     if ($this->Auth->login()) {                        
-                        return $this->redirect($this->Auth->redirectUrl());
+                        return $this->redirect(['controller'=>'users','action'=>'admin_dashboard']);
                     }else{
-                        echo __('Invalid username or password, try again');
-                    }
-                    
-                    $this->Flash->error(__('Invalid username or password, try again'));
+                        $this->Session->setFlash(__('Invalid username or password, try again'));
+                    }                                        
                 }            
         }
         
         public function admin_logout() {
             return $this->redirect($this->Auth->logout());
+        }
+        
+        public function admin_dashboard(){
+            
         }
 }
