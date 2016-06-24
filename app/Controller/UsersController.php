@@ -15,7 +15,6 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator', 'Session', 'Flash');
         
         public function beforeFilter() {
             parent::beforeFilter();
@@ -54,7 +53,7 @@ class UsersController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->User->create();
+			$this->User->create();                        
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -142,7 +141,7 @@ class UsersController extends AppController {
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-                        $this->request->data['User']['password'] = AuthComponent::password($this->request->data['User']['password']);
+                        $this->request->data['User']['password'] = AuthComponent :: password( $this->request->data['User']['password'] );
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -197,15 +196,23 @@ class UsersController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
         
-        public function admin_login(){
-            $this->layout = "admin_login";
-            if($this->request->is('Post')){                
-                if( $this->Auth->login() ){                
-                //$user = $this->User->findByUsernameAndPassword( $this->request->data['User']['username'], AuthComponent::password( $this->request->data['User']['password'] ));                
-                    $this->Session->setFlash( __('Valid Login Details!') );
-                }else{
-                    $this->Session->setFlash( __('Invalid Login Details!') );
-                }
-            }
+        public function admin_login() {
+            $this->layout = 'admin_login';            
+                 if ($this->request->is('post')) {
+                     
+                    // pr($this->request->data);
+                    //$this->request->data['User']['password'] = AuthComponent :: password( $this->request->data['User']['password'] ); 
+                    if ($this->Auth->login()) {                        
+                        return $this->redirect($this->Auth->redirectUrl());
+                    }else{
+                        echo __('Invalid username or password, try again');
+                    }
+                    
+                    $this->Flash->error(__('Invalid username or password, try again'));
+                }            
+        }
+        
+        public function admin_logout() {
+            return $this->redirect($this->Auth->logout());
         }
 }

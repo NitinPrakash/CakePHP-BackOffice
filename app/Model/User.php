@@ -1,9 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('AuthComponent', 'Controller/Component');
 /**
  * User Model
  *
  */
+
 class User extends AppModel {
 
 /**
@@ -50,4 +52,5 @@ class User extends AppModel {
 			),
 		),
 	);
+                
 }

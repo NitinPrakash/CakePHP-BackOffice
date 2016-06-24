@@ -32,19 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     
-    public $components = array(
-        'Auth' => array(
-            'authenticate' => array(
-                'Form' => array(
-                    'fields' => array('username' => 'email'),
-                    'passwordHasher' => array(
-                                            'className' => 'Simple',
-                                            'hashType' => 'sha256'
-                                        )
-                )
-            )
-        )
-    );
+    public $components = array('Auth','Security','Paginator', 'Session', 'Flash');
     
     function beforeFilter() {
         if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
